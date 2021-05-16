@@ -1,0 +1,3 @@
+[submodule "treydock-ssh_exporter"]
+	path = treydock-ssh_exporter
+	url = https://github.com/treydock/ssh_exporter
