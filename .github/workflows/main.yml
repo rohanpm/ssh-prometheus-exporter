@@ -15,13 +15,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        submodules: recursive
 
     - name: Build
-      uses: redhat-actions/buildah-build@v2
-      with:
-        image: ssh-prometheus-exporter
-        dockerfiles: |
-          ./Containerfile
+      run: docker build -f ./Containerfile -t ssh-prometheus-exporter .
 
     - name: Sanity check
       run: docker run ssh-prometheus-exporter --version
