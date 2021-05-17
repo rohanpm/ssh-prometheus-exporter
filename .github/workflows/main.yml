@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build image
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build
+      uses: redhat-actions/buildah-build@v2
+      with:
+        image: ssh-prometheus-exporter
+        dockerfiles: |
+          ./Containerfile
+
+    - name: Sanity check
+      run: docker run ssh-prometheus-exporter --version
