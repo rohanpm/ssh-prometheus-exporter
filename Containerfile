@@ -1,5 +1,7 @@
-FROM golang@sha256:6f0b0a314b158ff6caf8f12d7f6f3a966500ec6afb533e986eca7375e2f7560f
+FROM registry.access.redhat.com/ubi8/go-toolset@sha256:ba3cf7eb028024730e91fb99835e0a84623ed6d550084dfd064f93e5263d6cf6
 ADD treydock-ssh_exporter /src
+USER root
 RUN cd /src && go build && mv ssh_exporter / && go clean -r -cache -modcache
+USER 1001
 EXPOSE 9312
 ENTRYPOINT ["/ssh_exporter"]
