@@ -7,5 +7,5 @@
     "enabled": true
   },
   "automerge": true,
-  "stabilityDays": 1
+  "stabilityDays": 3
 }
