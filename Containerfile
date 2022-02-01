@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/go-toolset@sha256:287d341349331a19866a2862a55e0cc5c412f21a86ba80629f59579ef6a38c03
+FROM registry.access.redhat.com/ubi8/go-toolset@sha256:2d56a94f1e83fe0e874f099dd8d03b876186985a7dbeea118e8c725b1b07b9f0
 ADD treydock-ssh_exporter /src
 USER root
 RUN cd /src && go build && mv ssh_exporter / && go clean -r -cache -modcache
